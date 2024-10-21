@@ -25,15 +25,24 @@ public class Main {
         
         System.out.println("Create your account: ");
         
-        do { 
+        while (true) { 
             System.out.print("Enter the Account holder's name: ");
             name = scanner.nextLine();
-        }while (!BankAccount.checkAccName(name));
+            if (!BankAccount.checkAccName(name)) 
+                System.out.println("Error: Account name shouldn't contain numeric values.");
+            else
+               break;
+        }
         
-        do {
+        while (true){
             System.out.print("Enter the account number: ");
             number = scanner.nextLine();
-        }while (!BankAccount.checkAccNum(number));
+            if (!BankAccount.checkAccNum(number)) 
+                System.out.println("Error: Account number shouldn't contain non-numeric values.");
+            else             
+                break;
+
+        }
         
          //Creating an instance
         BankAccount account = new BankAccount(number, name);
@@ -45,7 +54,7 @@ public class Main {
     static void routine(BankAccount account) {
         Scanner scanner = new Scanner(System.in);
         char option;
-        double amount = 0;
+        double amount;
         System.out.print("D -> deposit a positive amount\n");
         System.out.println("W -> withdraw a positive amount\nB -> balance check");
         System.out.println("I -> Complete account information\nH -> help\nE -> Exit\n");
@@ -67,12 +76,14 @@ public class Main {
                     System.out.print("Enter the amount to withdraw: ");
                     amount = scanner.nextDouble();
                     if (BankAccount.checkInputAmount(amount)) {
-                        account.withdraw(amount);
+                        if(!account.withdraw(amount)) {
+                            System.out.println("Error: Insufficient funds. Withdrawal failed.");
+                        }
                     }
                     break;
                 case 'B':
                 case 'b':
-                    account.checkBalance();
+                    System.out.println("Current Balance: " + account.getBalance());
                     break;
                 case 'I':
                 case 'i':

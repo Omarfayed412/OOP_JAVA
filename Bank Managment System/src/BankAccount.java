@@ -14,8 +14,12 @@ public class BankAccount {
     
     //public constructor 
     public BankAccount(String accountNumber, String accountName) {
-        this.accountNumber = accountNumber;            
-        this.accountName = accountName;        
+        if (checkAccNum(accountName)) {
+            this.accountNumber = accountNumber;    
+        }
+        if(checkAccName(accountName)) {
+            this.accountName = accountName; 
+        }
     }
     
     //Method to get the balance data within the class
@@ -35,19 +39,15 @@ public class BankAccount {
     
     //Method to set the balance within the class
     public void setBalance(double amount) {
-        this.currentBalance = amount;
-    }
-    
-    //Methid to print the current balance attribute
-    public void checkBalance() {
-        System.out.println("Current Balance: " + getBalance());
+        if (checkInputAmount(amount)) {
+            this.currentBalance = amount;
+        }
     }
     
     //Withdrawing amount from current balance
     public boolean withdraw(double amount) {
         if (checkInputAmount(amount)) {
             if (amount > getBalance()) {
-                System.out.println("Error: Insufficient funds. Withdrawal failed.");
                 return false;
             }
 
@@ -94,7 +94,6 @@ public class BankAccount {
         char[] array = accNum.toCharArray();
         for (char i : array) {
             if (!(Character.isDigit(i))) {
-                System.out.println("Error: Account number shouldn't contain non-numeric values.");
                 return false;
             }
         }
@@ -106,7 +105,6 @@ public class BankAccount {
         char[] array = accName.toCharArray();
         for (char i : array) {
             if (Character.isDigit(i)) {
-                System.out.println("Error: Account name shouldn't contain numeric values.");
                 return false;
             }
         }
