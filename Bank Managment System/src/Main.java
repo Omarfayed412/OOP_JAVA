@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 
 /**
- *
+ * Github: https://github.com/Omarfayed412/OOP_JAVA/tree/main/Bank%20Managment%20System
  * @author Omar Fayed
  */
 public class Main {
