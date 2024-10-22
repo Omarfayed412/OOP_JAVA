@@ -7,7 +7,7 @@ package mypackage;
 import java.util.ArrayList;
 
 /**
- *
+ * Github: https://github.com/Omarfayed412/OOP_JAVA/tree/main/Movie%20Review%20Management%20System
  * @author Omar Fayed
  */
 public class Movie {
