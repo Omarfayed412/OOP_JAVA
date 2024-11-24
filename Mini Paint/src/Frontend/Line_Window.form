@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="lLbl" alignment="0" max="32767" attributes="0"/>
+                      <Component id="xLbl" alignment="0" max="32767" attributes="0"/>
+                      <Component id="x1Field" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="x2Field" alignment="0" max="32767" attributes="0"/>
+                      <Component id="addBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="wLbl" alignment="1" max="32767" attributes="0"/>
+                      <Component id="returnBtn" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="y1Field" alignment="1" max="32767" attributes="0"/>
+                      <Component id="yLbl" alignment="1" min="-2" pref="74" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="y2Field" alignment="1" min="-2" pref="72" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="xLbl" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="yLbl" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="x1Field" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="y1Field" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lLbl" min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="x2Field" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="wLbl" min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="y2Field" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="returnBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="xLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start_X:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="yLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start_Y:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="x1Field">
+    </Component>
+    <Component class="javax.swing.JTextField" name="y1Field">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="End_X:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="wLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="End_Y:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="x2Field">
+    </Component>
+    <Component class="javax.swing.JTextField" name="y2Field">
+    </Component>
+    <Component class="javax.swing.JButton" name="addBtn">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Add"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="returnBtn">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Return"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnBtnActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
