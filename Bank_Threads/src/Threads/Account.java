@@ -6,8 +6,21 @@ package Threads;
 
 /**
  *
- * @author 20112
+ * @author Omar Fayed
  */
 public class Account {
+    private double balance;
+
+    public Account(double balance) {
+        this.balance = balance;
+    }
+
+    public synchronized double getBalance() {
+        return balance;
+    }
+
+    public synchronized void setBalance(double balance) {
+        this.balance = balance;
+    }
     
 }
