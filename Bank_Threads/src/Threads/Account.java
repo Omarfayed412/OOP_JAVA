@@ -6,15 +6,8 @@ package Threads;
 
 /**
  *
- * @author Omar Fayed
+ * @author 20112
  */
-public class WithdrawThread extends Thread{
-    private double amount;
-    Account account;
-
-    public WithdrawThread(Account account) {
-        this.account = account;
-    }
-    
+public class Account {
     
 }
