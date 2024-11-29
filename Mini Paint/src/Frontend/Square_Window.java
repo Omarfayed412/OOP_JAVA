@@ -6,17 +6,25 @@ package Frontend;
 
 /**
  *
- * @author 20112
+ * @author Omar Fayed
  */
+import Backend.DrawingEngineMain;
 import Backend.Point;
 import Backend.Square;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class Square_Window extends javax.swing.JFrame {
-    Square s = null;
+    private Square s = new Square();
+    private DrawingEngineMain engine;
+    private javax.swing.JPanel board;
+    private String ID;
    
-    public Square_Window() {
+    public Square_Window(DrawingEngineMain engine, javax.swing.JPanel board, int ID) {
+        this.engine = engine;
+        this.board = board;
+        this.ID = "Square_" + ID;
         setTitle("Square Dimensions");
         initComponents();
     }
@@ -43,7 +51,8 @@ public class Square_Window extends javax.swing.JFrame {
 
         posLbl.setText("Enter Position:");
 
-        addBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        addBtn.setBackground(new java.awt.Color(102, 204, 255));
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,7 +60,8 @@ public class Square_Window extends javax.swing.JFrame {
             }
         });
 
-        returnBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        returnBtn.setBackground(new java.awt.Color(102, 204, 255));
+        returnBtn.setForeground(new java.awt.Color(255, 255, 255));
         returnBtn.setText("Return");
         returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,12 +131,24 @@ public class Square_Window extends javax.swing.JFrame {
     }//GEN-LAST:event_returnBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-        Point p = new Point(Integer.parseInt(xField.getText()), Integer.parseInt(yField.getText()));
-        s.setPosition(p);
-        Map<String, Double> properties = new HashMap<>();
-        properties.put("L", Double.valueOf(lengthField.getText()));
-        s.setProperties(properties); 
+        try {
+            if (Double.valueOf(lengthField.getText()) <= 0)
+                throw new ArithmeticException();
+            Point p = new Point(Integer.parseInt(xField.getText()), Integer.parseInt(yField.getText()));
+            s.setPosition(p);
+            Map<String, Double> properties = new HashMap<>();
+            properties.put("L", Double.valueOf(lengthField.getText()));
+            s.setProperties(properties);
+            s.setID(this.ID);
+            this.engine.addShape(s);
+            board.repaint();
+            dispose();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+        catch (ArithmeticException e) {
+            JOptionPane.showMessageDialog(null, "Error: Length cannot be -ve");
+        }
     }//GEN-LAST:event_addBtnActionPerformed
 
    

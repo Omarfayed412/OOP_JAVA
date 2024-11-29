@@ -4,12 +4,14 @@
  */
 package Backend;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Omar Fayed
  */        
         
-public class Point {
+public class Point implements Serializable{
     private int x;
     private int y;
     public Point(int x, int y) {

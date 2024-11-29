@@ -24,18 +24,18 @@ public class Square extends AbstractShape {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength() {
         this.length = super.getProperties().get("L").intValue();
     }
 
     @Override
-    void draw(javax.swing.JPanel canvas) {
-        Graphics g = canvas.getGraphics();
-        g.setColor(this.getColor());
-        g.drawRect(this.getPosition().getX(), this.getPosition().getY(), length, length);
-        Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(this.getFillColor());
+    public void draw(Graphics canvas) {
+        this.setLength();
+        Graphics2D g2 = (Graphics2D) canvas;
+        g2.setColor(this.getColor());
         g2.fillRect(this.getPosition().getX(), this.getPosition().getY(), length, length);
+        g2.setColor(this.getColor());
+        g2.drawRect(this.getPosition().getX(), this.getPosition().getY(), length, length);
     }
 
     

@@ -9,17 +9,17 @@ import Backend.Shape;
 
 /**
  *
- * @author 20112
+ * @author Omar Fayed
  */
-public class Coloring extends javax.swing.JFrame {
-    AbstractShape s = null;
-    /**
-     * Creates new form Coloring
-     */
-    public Coloring(AbstractShape s) {
+public class Coloring_Window extends javax.swing.JFrame {
+    private AbstractShape s;
+    private javax.swing.JPanel board;
+    
+    public Coloring_Window(AbstractShape s, javax.swing.JPanel board) {
         setTitle("Color chooser Window");
         initComponents();
         this.s = s;
+        this.board = board;
     }
 
    
@@ -34,7 +34,8 @@ public class Coloring extends javax.swing.JFrame {
 
         colorChooser.setToolTipText("Choose Color");
 
-        returnBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        returnBtn.setBackground(new java.awt.Color(102, 204, 255));
+        returnBtn.setForeground(new java.awt.Color(255, 255, 255));
         returnBtn.setText("Return");
         returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -42,7 +43,8 @@ public class Coloring extends javax.swing.JFrame {
             }
         });
 
-        chooseBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        chooseBtn.setBackground(new java.awt.Color(102, 204, 255));
+        chooseBtn.setForeground(new java.awt.Color(255, 255, 255));
         chooseBtn.setText("Choose");
         chooseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +82,7 @@ public class Coloring extends javax.swing.JFrame {
         // TODO add your handling code here:
         s.setColor(colorChooser.getColor());
         s.setFillColor(colorChooser.getColor());
+        board.repaint();
         dispose();
     }//GEN-LAST:event_chooseBtnActionPerformed
 

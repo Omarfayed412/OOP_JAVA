@@ -31,6 +31,7 @@ public class WithdrawThread extends Thread{
                 randNum = rand.nextInt(max - min + 1) + min;
                 if (randNum > this.account.getBalance()) {
                     System.out.println("Invalid withdraw!");
+                    continue;
                 }
                 else {
                     this.account.setBalance(this.account.getBalance() + randNum);

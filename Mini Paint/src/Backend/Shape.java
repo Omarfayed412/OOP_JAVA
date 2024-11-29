@@ -5,7 +5,7 @@
 package Backend;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.util.Map;
 
 /**
@@ -25,7 +25,7 @@ public interface Shape {
     public void setFillColor(Color color);
     public Color getFillColor();
     //Redraw shape in canvas
-    public void draw(javax.swing.JPanel canvas); 
+    public void draw(Graphics canvas); 
     public String getID();
 }
 

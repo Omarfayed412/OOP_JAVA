@@ -8,16 +8,23 @@ package Frontend;
  *
  * @author 20112
  */
+import Backend.DrawingEngineMain;
 import Backend.Point;
 import Backend.Rectangle;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class Rectangle_Window extends javax.swing.JFrame {
-    Rectangle r = null;
+    private Rectangle r = new Rectangle();
+    private DrawingEngineMain engine;
+    private javax.swing.JPanel board;
+    private String ID;
     
-    
-    public Rectangle_Window() {
+    public Rectangle_Window(DrawingEngineMain engine, javax.swing.JPanel board, int ID) {
+        this.engine = engine;
+        this.board = board;
+        this.ID = "Rectangle_" + ID;
         setTitle("Rectangle Dimensions");
         initComponents();
     }
@@ -45,7 +52,8 @@ public class Rectangle_Window extends javax.swing.JFrame {
 
         lLbl.setText("Length:");
 
-        addBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        addBtn.setBackground(new java.awt.Color(102, 204, 255));
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,7 +61,8 @@ public class Rectangle_Window extends javax.swing.JFrame {
             }
         });
 
-        returnBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        returnBtn.setBackground(new java.awt.Color(102, 204, 255));
+        returnBtn.setForeground(new java.awt.Color(255, 255, 255));
         returnBtn.setText("Return");
         returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,13 +133,26 @@ public class Rectangle_Window extends javax.swing.JFrame {
     }//GEN-LAST:event_returnBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-        Point p = new Point(Integer.parseInt(xField.getText()), Integer.parseInt(yField.getText()));
-        r.setPosition(p);
-        Map<String, Double> properties = new HashMap<>();
-        properties.put("L", Double.valueOf(lengthField.getText()));
-        properties.put("W", Double.valueOf(widthField.getText()));
-        r.setProperties(properties); 
+        try {
+            if (Double.valueOf(lengthField.getText()) <= 0 || Double.valueOf(widthField.getText()) <= 0)
+                throw new ArithmeticException();
+            
+            Point p = new Point(Integer.parseInt(xField.getText()), Integer.parseInt(yField.getText()));
+            r.setPosition(p);
+            Map<String, Double> properties = new HashMap<>();
+            properties.put("L", Double.valueOf(lengthField.getText()));
+            properties.put("W", Double.valueOf(widthField.getText()));
+            r.setProperties(properties); 
+            r.setID(this.ID);
+            this.engine.addShape(r);
+            board.repaint();
+            dispose();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+        catch (ArithmeticException e) {
+            JOptionPane.showMessageDialog(null, "Error: Length or Width cannot be -ve");
+        }    
     }//GEN-LAST:event_addBtnActionPerformed
 
 

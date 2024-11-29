@@ -14,10 +14,18 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JTextField;
+import Backend.DrawingEngineMain;
+import javax.swing.JOptionPane;
 public class Circle_Window extends javax.swing.JFrame {
-    Circle c = new Circle();
+    private Circle c = new Circle();
+    private DrawingEngineMain engine;
+    private javax.swing.JPanel board;
+    private String ID;
     
-    public Circle_Window() {
+    public Circle_Window(DrawingEngineMain engine, javax.swing.JPanel board, int ID) {
+        this.engine = engine;
+        this.board = board;
+        this.ID = "Circle_" + ID;
         setTitle("Circle Dimensions");
         initComponents();
     }
@@ -55,7 +63,8 @@ public class Circle_Window extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        addBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        addBtn.setBackground(new java.awt.Color(102, 204, 255));
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +72,8 @@ public class Circle_Window extends javax.swing.JFrame {
             }
         });
 
-        returnBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        returnBtn.setBackground(new java.awt.Color(102, 204, 255));
+        returnBtn.setForeground(new java.awt.Color(255, 255, 255));
         returnBtn.setText("Return");
         returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,14 +149,28 @@ public class Circle_Window extends javax.swing.JFrame {
     }//GEN-LAST:event_returnBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-        Point p = new Point(Integer.parseInt(xField.getText()), Integer.parseInt(yField.getText()));
-        c.setPosition(p);
-        Map<String, Double> properties = new HashMap<>();
-        properties.put("R", Double.valueOf(radiusField.getText()));
-        c.setProperties(properties);    
-        c.setColor(Color.BLACK);
-        c.setFillColor(Color.WHITE);
+        try {
+            if (Double.valueOf(radiusField.getText()) <= 0) throw new ArithmeticException();
+            
+            Point p = new Point(Integer.parseInt(xField.getText()), Integer.parseInt(yField.getText()));
+            System.out.println(p);
+            c.setPosition(p);
+            Map<String, Double> properties = new HashMap<>();
+            properties.put("R", Double.valueOf(radiusField.getText()));
+            c.setProperties(properties);    
+            c.setColor(Color.BLACK);
+            c.setFillColor(Color.BLACK);
+            c.setID(this.ID);
+            this.engine.addShape(c);
+            board.repaint();
+            dispose();
+        } 
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+        catch (ArithmeticException e) {
+            JOptionPane.showMessageDialog(null, "Error: Radius cannot be -ve");
+        }
     }//GEN-LAST:event_addBtnActionPerformed
 
    

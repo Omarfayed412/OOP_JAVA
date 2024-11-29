@@ -4,16 +4,17 @@
  */
 package Backend;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+
 /**
  *
  * @author Omar Fayed
  */
+
 public class DrawingEngineMain implements DrawingEngine {
     private ArrayList<AbstractShape> shapes = new ArrayList<AbstractShape>();
-
-   
     
     @Override
     public void addShape(AbstractShape shape) {
@@ -29,22 +30,31 @@ public class DrawingEngineMain implements DrawingEngine {
     }
     
     @Override
-    public AbstractShape[] getShapes() {
-        AbstractShape[] shapes_arr = null;
-        int count = 0;
-        for (AbstractShape i : shapes) {
-            shapes_arr[count] = i;
-            count++;
-        }
-        return shapes_arr;
+    public ArrayList<AbstractShape> getShapes() {
+        return this.shapes;
     }
     
-    public void refresh(javax.swing.JPanel canvas) {
+    @Override
+    public void refresh(Graphics canvas) {
         for (AbstractShape i : shapes) {
+            System.out.print("shape drawed");
             i.draw(canvas);
         }
-        canvas.repaint();
         System.out.println("Refreshed");
     }
+
+    @Override
+    public void addAll(ArrayList<AbstractShape> newShapes) {
+        for (AbstractShape i : newShapes) 
+            shapes.add(i);
+    }
+
+    @Override
+    public void removeAll() {
+        for (AbstractShape i : shapes)
+            shapes.remove(i);
+    }
     
+    
+   
 }

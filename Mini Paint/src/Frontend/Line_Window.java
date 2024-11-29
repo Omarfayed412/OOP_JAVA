@@ -9,17 +9,25 @@ package Frontend;
  * @author 20112
  */
 
+import Backend.DrawingEngineMain;
 import Backend.Line;
 import Backend.Point;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class Line_Window extends javax.swing.JFrame {
-    Line l = null;
+    private Line l = new Line();
+    private DrawingEngineMain engine;
+    private javax.swing.JPanel board;
+    private String ID;
     /**
      * Creates new form Line
      */
-    public Line_Window() {
+    public Line_Window(DrawingEngineMain engine, javax.swing.JPanel board, int ID) {
+        this.engine = engine;
+        this.board = board;
+        this.ID = "Line_" + ID;
         setTitle("Line dimensions");
         initComponents();
     }
@@ -49,7 +57,8 @@ public class Line_Window extends javax.swing.JFrame {
 
         wLbl.setText("End_Y:");
 
-        addBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        addBtn.setBackground(new java.awt.Color(102, 204, 255));
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +66,8 @@ public class Line_Window extends javax.swing.JFrame {
             }
         });
 
-        returnBtn.setBackground(java.awt.SystemColor.inactiveCaption);
+        returnBtn.setBackground(new java.awt.Color(102, 204, 255));
+        returnBtn.setForeground(new java.awt.Color(255, 255, 255));
         returnBtn.setText("Return");
         returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,15 +136,22 @@ public class Line_Window extends javax.swing.JFrame {
     }//GEN-LAST:event_returnBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-        Point p1 = new Point(Integer.parseInt(x1Field.getText()), Integer.parseInt(y1Field.getText()));
-        l.setPosition(p1);
-        Point p2 = new Point(Integer.parseInt(x2Field.getText()), Integer.parseInt(y2Field.getText()));
-        l.setPosition(p2);
-        Map<String, Double> properties = new HashMap<>();
-        properties.put("X", Double.valueOf(x2Field.getText()));
-        properties.put("Y", Double.valueOf(y2Field.getText()));
-        l.setProperties(properties); 
+        try {
+            Point p1 = new Point(Integer.parseInt(x1Field.getText()), Integer.parseInt(y1Field.getText()));
+            l.setPosition(p1);
+            Point p2 = new Point(Integer.parseInt(x2Field.getText()), Integer.parseInt(y2Field.getText()));
+            Map<String, Double> properties = new HashMap<>();
+            properties.put("X2", Double.valueOf(x2Field.getText()));
+            properties.put("Y2", Double.valueOf(y2Field.getText()));
+            l.setProperties(properties); 
+            l.setID(this.ID);
+            this.engine.addShape(l);
+            board.repaint();
+            dispose();
+        } 
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
     }//GEN-LAST:event_addBtnActionPerformed
 
 

@@ -4,6 +4,9 @@
  */
 package Backend;
 
+import java.awt.Graphics;
+import java.util.ArrayList;
+
 /**
  *
  * @author Omar Fayed
@@ -14,7 +17,11 @@ public interface DrawingEngine {
     public void addShape(AbstractShape shape);
     public void removeShape(AbstractShape shape);
     //Return created shapes
-    public AbstractShape[] getShapes();
+    public ArrayList<AbstractShape> getShapes();
     //Redraw all shapes
-    public void refresh(javax.swing.JPanel canvas);
+    public void refresh(Graphics canvas);
+    //Adds arraylist to other
+    public void addAll(ArrayList<AbstractShape> newShapes);
+    //removes all elements
+    public void removeAll();
 }

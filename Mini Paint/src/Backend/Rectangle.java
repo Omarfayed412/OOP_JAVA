@@ -29,23 +29,24 @@ public class Rectangle extends AbstractShape {
         return width;
     }
 
-    public void setLength(int length) {
+    public void setLength() {
         this.length = super.getProperties().get("L").intValue();
     }
 
-    public void setWidth(int width) {
+    public void setWidth() {
         this.width = super.getProperties().get("W").intValue();
     }
     
    
     @Override
-    void draw(javax.swing.JPanel canvas) {
-        Graphics g = canvas.getGraphics();
-        g.setColor(this.getColor());
-        g.drawRect(this.getPosition().getX(), this.getPosition().getY(), width, length);
-        Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(this.getFillColor());
+    public void draw(Graphics canvas) {
+        Graphics2D g2 = (Graphics2D) canvas;
+        this.setWidth();
+        this.setLength();
+        g2.setColor(this.getColor());
         g2.fillRect(this.getPosition().getX(), this.getPosition().getY(), width, length);
+        g2.setColor(this.getColor());
+        g2.drawRect(this.getPosition().getX(), this.getPosition().getY(), width, length);
     }
     
 }
