@@ -22,3 +22,6 @@
 /Paint_Vol_2/build/
 /Paint_Vol_2/dist/
 *.class
+/Design patterns/nbproject/private/
+/Design patterns/build/
+/Design patterns/dist/
